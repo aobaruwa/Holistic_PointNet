@@ -1,0 +1,132 @@
+Using cuda . . .
+DataParallel(
+  (module): PointNetCls(
+    (feat): PointNetfeat(
+      (stn): STN3d(
+        (conv1): Conv1d(3, 64, kernel_size=(1,), stride=(1,))
+        (conv2): Conv1d(64, 128, kernel_size=(1,), stride=(1,))
+        (conv3): Conv1d(128, 1024, kernel_size=(1,), stride=(1,))
+        (fc1): Linear(in_features=1024, out_features=512, bias=True)
+        (fc2): Linear(in_features=512, out_features=256, bias=True)
+        (fc3): Linear(in_features=256, out_features=9, bias=True)
+        (relu): ReLU()
+        (bn1): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (bn2): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (bn3): BatchNorm1d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (bn4): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (bn5): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (conv1): Conv1d(3, 64, kernel_size=(1,), stride=(1,))
+      (conv2): Conv1d(64, 128, kernel_size=(1,), stride=(1,))
+      (conv3): Conv1d(128, 1024, kernel_size=(1,), stride=(1,))
+      (bn1): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (bn2): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (bn3): BatchNorm1d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (fstn): STNkd(
+        (conv1): Conv1d(64, 64, kernel_size=(1,), stride=(1,))
+        (conv2): Conv1d(64, 128, kernel_size=(1,), stride=(1,))
+        (conv3): Conv1d(128, 1024, kernel_size=(1,), stride=(1,))
+        (fc1): Linear(in_features=1024, out_features=512, bias=True)
+        (fc2): Linear(in_features=512, out_features=256, bias=True)
+        (fc3): Linear(in_features=256, out_features=4096, bias=True)
+        (relu): ReLU()
+        (bn1): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (bn2): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (bn3): BatchNorm1d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (bn4): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (bn5): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (fc1): Linear(in_features=1024, out_features=512, bias=True)
+    (fc2): Linear(in_features=512, out_features=256, bias=True)
+    (fc3): Linear(in_features=256, out_features=384, bias=True)
+    (dropout): Dropout(p=0.3, inplace=False)
+    (bn1): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (bn2): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU()
+  )
+)
+train_loss 0.05018232515019228
+val_loss 0.0343125987239182
+train_loss 0.029520461216850355
+val_loss 0.025739805353805423
+train_loss 0.024414967503778334
+val_loss 0.02232527706772089
+train_loss 0.02160682998166578
+val_loss 0.020217168644070624
+train_loss 0.02005213634189156
+val_loss 0.019493129921145737
+train_loss 0.019318314583813525
+val_loss 0.018877782663330435
+train_loss 0.018827031002484923
+val_loss 0.018306017851457
+train_loss 0.018139737279085126
+val_loss 0.018662024821154772
+train_loss 0.017895711498218867
+val_loss 0.01735963764321059
+train_loss 0.017352325956524757
+val_loss 0.01703318598959595
+train_loss 0.016639812067218072
+val_loss 0.01658269155025482
+train_loss 0.01632255812262674
+val_loss 0.015985869551077486
+train_loss 0.015668929266415055
+val_loss 0.015715319719165562
+train_loss 0.015629407820209183
+val_loss 0.01569367702398449
+train_loss 0.015371011091871924
+val_loss 0.015271685473620891
+train_loss 0.015279436383616375
+val_loss 0.01564282004535198
+train_loss 0.0152882752367474
+val_loss 0.015578219097107649
+train_loss 0.015827074071852496
+val_loss 0.015830330077558755
+train_loss 0.015336624540280265
+val_loss 0.015307794279418885
+train_loss 0.015197922113966823
+val_loss 0.015489102147053927
+train_loss 0.015155895854200168
+val_loss 0.015226943325717002
+train_loss 0.015104491892326578
+val_loss 0.015304466403089464
+train_loss 0.015165126843967562
+val_loss 0.015713393864687532
+train_loss 0.01508561164970963
+val_loss 0.015077770828269423
+train_loss 0.015009994482078837
+val_loss 0.015171428421046585
+train_loss 0.014944006834760961
+val_loss 0.015280173032544553
+train_loss 0.014917914489869306
+val_loss 0.015352148122154177
+train_loss 0.015171532832394294
+val_loss 0.015143950535915792
+train_loss 0.01481525603271697
+val_loss 0.01682689156057313
+train_loss 0.014934382684418834
+val_loss 0.01535617406340316
+train_loss 0.014780339866578444
+val_loss 0.015001489261165261
+train_loss 0.014666481898403536
+val_loss 0.014923852042295039
+train_loss 0.01468820772874973
+val_loss 0.014849227807484567
+train_loss 0.014645290172061988
+val_loss 0.014769788488280028
+train_loss 0.014434709064037108
+val_loss 0.014819166415836662
+train_loss 0.014375616822975779
+val_loss 0.014745999248698355
+train_loss 0.014407513662195615
+val_loss 0.01487479530228302
+train_loss 0.014583932527782601
+val_loss 0.014853519815485924
+train_loss 0.01461371281982692
+val_loss 0.014684628795133903
+train_loss 0.014411535797047717
+val_loss 0.014643685853341594
+train_loss 0.014380255442004365
+val_loss 0.0146201186850667
+train_loss 0.014222951593632393
+val_loss 0.014603987141977996
