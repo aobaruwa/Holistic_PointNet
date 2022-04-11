@@ -1,7 +1,7 @@
 from torch.optim import Adam
 from torch.optim.lr_scheduler import ExponentialLR
 from data import PcDataset
-from pnet2 import PointNetCls
+from point_net import PointNetCls
 from torch.utils.data.dataloader import DataLoader
 from tensorboardX import SummaryWriter
 import torch
@@ -30,7 +30,6 @@ class Trainer():
             estimates, _, _  = self.net(data)
             # reshape estimates
             loss =  self.loss_fn(estimates.float(), labels.float())
-            #print("train_loss",loss.item(), type(loss))
             loss.backward()
             self.optimizer.step()
             step_loss += loss.item()
@@ -48,7 +47,6 @@ class Trainer():
             data, labels = data.cuda(), labels.cuda()
             estimates, _, _  = self.net(data)
             loss = self.loss_fn(estimates.float(), labels.float())
-            #print("val_steploss",loss.item())
             step_loss += loss.item()
         avg_loss = step_loss/len(val_loader)
         print('val_loss', avg_loss)
@@ -110,9 +108,7 @@ if __name__=='__main__':
     train_file = sys.argv[5]
     val_file = sys.argv[6]
     log_dir = sys.argv[7]
-    # model config
-    #config = {'conv': [64, 128, 1024, 256, 512, 1024, 64, 128, 128, 512, 1048], 
-    #        'fc': [128, 128, 256, 512, 256]}
+
     num_classes = 128*3
     # Data Loaders 
     train_set = PcDataset(train_file,num_points_per_pc)
@@ -122,7 +118,6 @@ if __name__=='__main__':
     val_loader = DataLoader(val_set, batch_size=batch_size,
                         shuffle=False, num_workers=4, drop_last=True)
     # Training Ops
-    # net = PointNet(num_classes, config) 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print(f"Using {device} . . .")
     net = nn.DataParallel(PointNetCls(num_classes, feature_transform=True))
@@ -137,13 +132,6 @@ if __name__=='__main__':
     trainer = Trainer(net, n_epochs, optimizer, scheduler, scheduler_step, loss_fn, writer)
     trainer.train(train_loader, val_loader)
     # save model
-    model_path = os.path.join(os.path.abspath(""), "model2.pt")
+    model_path = os.path.join(os.path.abspath(""), "model.pt")
     torch.save(net, model_path)
-
-
-
-"""
-1st holistic attempt:
-train_loss 0.016809802555995023
-val_loss 0.005139501238290926
-"""
+    

@@ -3,22 +3,6 @@ import torchvision.transforms.functional as TF
 import numpy as np
 import random
 
-class AugmentPcData():
-    def __init__(self, rand_rotate=True, jitter=True):
-        self.rand_rotate=rand_rotate
-        self.jitter = jitter
-
-class RotationTransform():
-    def __init__(self, angles):
-        """Rotate by one of the given angles.
-           Usage:  MyRotationTransform(angles=[-30, -15, 0, 15, 30])
-        """
-        self.angles = angles
-
-    def __call__(self, x):
-        angle = random.choice(self.angles)
-        return TF.rotate(x, angle)
-
 class PcDataset(Dataset):
     def __init__(self, pc_file, size=64000):
         """ 
@@ -36,7 +20,6 @@ class PcDataset(Dataset):
         pc_tensor = TF.to_tensor(pc_data)
         norm_pc_data = TF.normalize(pc_tensor, mean=(0.005), std=(0.2))
        
-        #norm_pc_data.reshape() 
         return norm_pc_data
 
     def __getitem__(self, idx):
